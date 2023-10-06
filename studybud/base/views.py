@@ -3,11 +3,11 @@ from django.http import HttpResponse
 from .models import Room
 
 
-rooms = [
+""" rooms = [
     {"id": 1, "name": "lets learn python!"},
     {"id": 2, "name": "Design with me "},
     {"id": 3, "name": "Frontend developer"},
-]
+] """
 
 #rooms in admin.py
 def home(request):
@@ -19,9 +19,8 @@ def home(request):
 # accessing pk from urls.py  here where we have to display
 def room(request, pk):
     room = None
-    for i in rooms:
-        if i["id"] == int(pk):
-            room = i
+    #connected directly to admin and db 
+    room = Room.objects.get(id=pk)
     context = {"room": room}
 
     return render(request, "base/room.html", context)
