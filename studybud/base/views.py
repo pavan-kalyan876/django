@@ -9,7 +9,8 @@ from .models import Room
     {"id": 3, "name": "Frontend developer"},
 ] """
 
-#rooms in admin.py
+
+# rooms in admin.py
 def home(request):
     rooms = Room.objects.all()
     context = {"rooms": rooms}
@@ -19,8 +20,13 @@ def home(request):
 # accessing pk from urls.py  here where we have to display
 def room(request, pk):
     room = None
-    #connected directly to admin and db 
+    # connected directly to admin and db
     room = Room.objects.get(id=pk)
     context = {"room": room}
 
     return render(request, "base/room.html", context)
+
+
+def createRoom(request):
+    context = {}
+    return render(request, "base/room_form.html", context)

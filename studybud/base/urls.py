@@ -7,4 +7,5 @@ urlpatterns = [
     # where <str : pk> it's str = string pk= primary key
     # and pass pk in views
     path("room/<str:pk>/", views.room, name="room"),
+    path("create-room/", views.createRoom, name="create-room"),
 ]
