@@ -19,11 +19,15 @@ class Room(models.Model):
     name = models.name = models.CharField(max_length=250)
     description = models.TextField(blank=True, null=True)
     # participants = models
-
     updated = models.DateTimeField(auto_now=True)
 
     # create datetime fields in the database that are automatically updated to the current datetime.
     created = models.DateTimeField(auto_now_add=True)
+   
+
+     # this created after displaying the backend data in the ui
+    class Meta:
+         ordering = ["-updated", "-created"]
 
     def __str__(self):
         return self.name
